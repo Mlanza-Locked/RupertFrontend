@@ -232,22 +232,26 @@ export default function AdminDashboard({ token, onLogout }) {
                   <tr className="text-left text-muted-foreground border-b border-border/40">
                     <th className="pb-2 font-medium">#</th>
                     <th className="pb-2 font-medium">Email</th>
-                    <th className="pb-2 font-medium">Signed Up</th>
+                    <th className="pb-2 font-medium">Date</th>
+                    <th className="pb-2 font-medium">Time</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {signups.map((s, i) => (
-                    <tr key={s.id || i} className="border-b border-border/20 last:border-0">
-                      <td className="py-2.5 text-muted-foreground">{i + 1}</td>
-                      <td className="py-2.5 text-foreground">{s.email}</td>
-                      <td className="py-2.5 text-muted-foreground">
-                        {new Date(s.signed_up_at).toLocaleDateString("en-US", {
-                          month: "short", day: "numeric", year: "numeric",
-                          hour: "2-digit", minute: "2-digit",
-                        })}
-                      </td>
-                    </tr>
-                  ))}
+                  {signups.map((s, i) => {
+                    const d = new Date(s.signed_up_at);
+                    return (
+                      <tr key={s.id || i} className="border-b border-border/20 last:border-0">
+                        <td className="py-2.5 text-muted-foreground">{i + 1}</td>
+                        <td className="py-2.5 text-foreground">{s.email}</td>
+                        <td className="py-2.5 text-muted-foreground">
+                          {d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        </td>
+                        <td className="py-2.5 text-muted-foreground">
+                          {d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
