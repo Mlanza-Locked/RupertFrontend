@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { Check, Loader2, Send } from "lucide-react";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
 export default function WaitlistForm({ signedUpEmail, setSignedUpEmail, trackClick }) {
   const [email, setEmail] = useState("");

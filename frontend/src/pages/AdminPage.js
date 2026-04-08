@@ -2,7 +2,7 @@ import { useState } from "react";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
 export default function AdminPage() {
   const [admin, setAdmin] = useState(null);

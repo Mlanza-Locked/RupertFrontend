@@ -6,7 +6,7 @@ import {
   Download, LogOut, Loader2, Clock, MessageSquare,
 } from "lucide-react";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
 const StatCard = ({ icon: Icon, label, value, sub, testId }) => (
   <div data-testid={testId} className="bg-card border border-border/50 rounded-lg p-5" style={{ boxShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
