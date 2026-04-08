@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import WaitlistForm from "@/components/WaitlistForm";
 import { Badge } from "@/components/ui/badge";
 
@@ -16,8 +16,34 @@ const AVATARS = [
   "https://images.unsplash.com/photo-1758874384842-7e79ce77ed1a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHw0fHxkaXZlcnNlJTIwY3JlYXRvciUyMHBvcnRyYWl0JTIwc21pbGluZ3xlbnwwfHx8fDE3NzU2MDgzNzR8MA&ixlib=rb-4.1.0&q=85&w=80&h=80",
 ];
 
+// Small twinkling stars
+const STARS = Array.from({ length: 50 }, (_, i) => ({
+  id: i,
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 70}%`,
+  size: Math.random() * 2 + 1,
+  delay: Math.random() * 5,
+  duration: Math.random() * 3 + 2,
+}));
+
 export default function Hero({ signedUpEmail, setSignedUpEmail }) {
   const [headlineIndex, setHeadlineIndex] = useState(0);
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transforms — elements move at different rates on scroll
+  const moonY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const moonScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.85]);
+  const cloudFrontX = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const cloudBackX = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const cloudMidY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const accentLeftY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const accentRightY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const starsY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,52 +54,184 @@ export default function Hero({ signedUpEmail, setSignedUpEmail }) {
 
   return (
     <section
+      ref={sectionRef}
       id="hero-section"
       data-testid="hero-section"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
     >
-      {/* Abstract animated background */}
+      {/* ===== Night Sky Background ===== */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large turquoise orb */}
+        {/* Deep night gradient */}
         <div
-          className="absolute w-[600px] h-[600px] rounded-full animate-float-orb"
+          className="absolute inset-0"
           style={{
-            background: "radial-gradient(circle, rgba(64,224,208,0.12) 0%, transparent 70%)",
-            top: "10%",
-            left: "-10%",
+            background: "linear-gradient(180deg, #080b14 0%, #0e1222 35%, #131a2e 65%, #0f1420 100%)",
           }}
         />
-        {/* Secondary orb */}
-        <div
-          className="absolute w-[500px] h-[500px] rounded-full animate-float-orb-delayed"
+
+        {/* Twinkling stars — scroll parallax */}
+        <motion.div className="absolute inset-0" style={{ y: starsY }}>
+          {STARS.map((star) => (
+            <div
+              key={star.id}
+              className="absolute rounded-full bg-white"
+              style={{
+                left: star.left,
+                top: star.top,
+                width: star.size,
+                height: star.size,
+                opacity: 0.4,
+                animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`,
+              }}
+            />
+          ))}
+        </motion.div>
+
+        {/* Moon — bright, glowing, parallax on scroll */}
+        <motion.div
+          className="absolute"
           style={{
-            background: "radial-gradient(circle, rgba(64,224,208,0.08) 0%, transparent 70%)",
-            bottom: "5%",
-            right: "-5%",
+            top: "8%",
+            right: "15%",
+            y: moonY,
+            scale: moonScale,
+          }}
+        >
+          <div
+            className="w-28 h-28 sm:w-36 sm:h-36 rounded-full animate-moon-pulse relative"
+            style={{
+              background: "radial-gradient(circle at 40% 40%, #f0f4ff 0%, #dce6ff 40%, #b8ccf0 70%, #8aa8d8 100%)",
+            }}
+          >
+            {/* Moon craters (subtle) */}
+            <div className="absolute w-5 h-5 rounded-full bg-white/10" style={{ top: "25%", left: "50%" }} />
+            <div className="absolute w-3 h-3 rounded-full bg-white/8" style={{ top: "55%", left: "30%" }} />
+            <div className="absolute w-4 h-4 rounded-full bg-white/6" style={{ top: "40%", left: "65%" }} />
+          </div>
+          {/* Moon halo */}
+          <div
+            className="absolute inset-0 -m-8 rounded-full"
+            style={{
+              background: "radial-gradient(circle, rgba(180,200,255,0.08) 0%, transparent 70%)",
+            }}
+          />
+        </motion.div>
+
+        {/* Cloud layers with scroll parallax + idle drift */}
+
+        {/* Back cloud — far, slow */}
+        <motion.div
+          className="absolute animate-drift-cloud"
+          style={{
+            x: cloudBackX,
+            top: "15%",
+            left: "-5%",
+          }}
+        >
+          <div
+            className="w-[500px] h-[120px] rounded-full opacity-[0.06]"
+            style={{
+              background: "radial-gradient(ellipse, rgba(140,170,220,1) 0%, transparent 70%)",
+              filter: "blur(30px)",
+            }}
+          />
+        </motion.div>
+
+        {/* Mid cloud — medium depth */}
+        <motion.div
+          className="absolute animate-drift-cloud-reverse"
+          style={{
+            y: cloudMidY,
+            top: "55%",
+            right: "-8%",
+          }}
+        >
+          <div
+            className="w-[600px] h-[100px] rounded-full opacity-[0.07]"
+            style={{
+              background: "radial-gradient(ellipse, rgba(120,150,210,1) 0%, transparent 65%)",
+              filter: "blur(35px)",
+            }}
+          />
+        </motion.div>
+
+        {/* Front cloud — close, fast parallax */}
+        <motion.div
+          className="absolute animate-drift-cloud"
+          style={{
+            x: cloudFrontX,
+            bottom: "10%",
+            left: "10%",
+          }}
+        >
+          <div
+            className="w-[450px] h-[80px] rounded-full opacity-[0.05]"
+            style={{
+              background: "radial-gradient(ellipse, rgba(160,185,230,1) 0%, transparent 70%)",
+              filter: "blur(25px)",
+            }}
+          />
+        </motion.div>
+
+        {/* Wispy top-right cloud */}
+        <motion.div
+          className="absolute animate-drift-cloud-reverse"
+          style={{
+            x: cloudBackX,
+            y: cloudMidY,
+            top: "30%",
+            right: "5%",
+          }}
+        >
+          <div
+            className="w-[350px] h-[60px] rounded-full opacity-[0.04]"
+            style={{
+              background: "radial-gradient(ellipse, rgba(150,175,225,1) 0%, transparent 65%)",
+              filter: "blur(28px)",
+            }}
+          />
+        </motion.div>
+
+        {/* ===== Light dark-blue accent orbs — parallax on scroll ===== */}
+
+        {/* Left accent */}
+        <motion.div
+          className="absolute w-[350px] h-[350px] rounded-full"
+          style={{
+            y: accentLeftY,
+            background: "radial-gradient(circle, rgba(90,130,200,0.1) 0%, transparent 70%)",
+            top: "60%",
+            left: "-5%",
           }}
         />
-        {/* Small accent orb */}
-        <div
-          className="absolute w-[300px] h-[300px] rounded-full animate-float-orb-slow"
+
+        {/* Right accent */}
+        <motion.div
+          className="absolute w-[400px] h-[400px] rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(64,224,208,0.06) 0%, transparent 70%)",
-            top: "50%",
-            left: "60%",
+            y: accentRightY,
+            background: "radial-gradient(circle, rgba(80,120,190,0.08) 0%, transparent 70%)",
+            top: "20%",
+            right: "-8%",
           }}
         />
-        {/* Grid lines */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
+
+        {/* Bottom center glow */}
+        <motion.div
+          className="absolute w-[600px] h-[300px] rounded-full"
           style={{
-            backgroundImage: `linear-gradient(rgba(64,224,208,1) 1px, transparent 1px), linear-gradient(90deg, rgba(64,224,208,1) 1px, transparent 1px)`,
-            backgroundSize: "80px 80px",
+            y: accentLeftY,
+            background: "radial-gradient(ellipse, rgba(70,110,185,0.06) 0%, transparent 70%)",
+            bottom: "-5%",
+            left: "30%",
           }}
         />
+
         {/* Grain overlay */}
         <div className="absolute inset-0 grain-overlay" />
       </div>
 
-      {/* Content */}
+      {/* ===== Content ===== */}
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         {/* Urgency badge */}
         <motion.div
