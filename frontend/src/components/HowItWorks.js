@@ -70,7 +70,7 @@ export default function HowItWorks() {
             <motion.div
               key={i}
               data-testid={`step-card-${i}`}
-              className="relative text-center"
+              className="relative text-center group rounded-xl p-6 transition-all duration-300 hover:bg-card/80 hover:border hover:border-primary/20 hover:shadow-[0_0_30px_rgba(106,155,228,0.08)] border border-transparent cursor-default"
               custom={i}
               variants={stepVariants}
               initial="hidden"
@@ -79,15 +79,15 @@ export default function HowItWorks() {
             >
               {/* Step number + icon */}
               <div className="relative inline-flex flex-col items-center mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-card/95 border border-border/60 flex items-center justify-center mb-3 relative z-10" style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
-                  <step.icon className="w-6 h-6 text-primary" />
+                <div className="w-16 h-16 rounded-2xl bg-card/95 border border-border/60 flex items-center justify-center mb-3 relative z-10 transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-[0_0_24px_rgba(106,155,228,0.15)]" style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
+                  <step.icon className="w-6 h-6 text-primary transition-transform duration-300 group-hover:scale-110" />
                 </div>
-                <span className="font-heading text-xs tracking-[0.15em] text-muted-foreground uppercase">
+                <span className="font-heading text-xs tracking-[0.15em] text-muted-foreground uppercase transition-colors duration-300 group-hover:text-primary">
                   Step {step.step}
                 </span>
               </div>
 
-              <h3 className="font-heading font-semibold text-lg text-foreground mb-3 section-text-glow">
+              <h3 className="font-heading font-semibold text-lg text-foreground mb-3 section-text-glow transition-colors duration-300 group-hover:text-primary">
                 {step.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto section-text-glow">
