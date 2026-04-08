@@ -1,0 +1,73 @@
+{
+  "theme": "Dark",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) - Dark Mode variant with Electric Turquoise Accent",
+  "domain": "AI Video Editor SaaS for Creators",
+  "colors": {
+    "background": "#121316",
+    "foreground": "#FAFAFA",
+    "primary": "#40E0D0",
+    "primary_foreground": "#121316",
+    "card": "#1E1F22",
+    "card_foreground": "#FAFAFA",
+    "border": "#2B2D31"
+  },
+  "typography": {
+    "headings": "Outfit",
+    "body": "Manrope",
+    "rules": [
+      "H1 must not exceed text-5xl sm:text-6xl with tracking-tight",
+      "Overlines must be uppercase, text-xs, tracking-[0.2em]",
+      "Do NOT use Inter for anything."
+    ]
+  },
+  "layout_and_spacing": {
+    "spacing_system": "Use generous spacing, e.g., py-24 or py-32 for sections",
+    "grid": "Bento Grid (Mode A) for Feature Highlights. Base Grid: grid-cols-1 md:grid-cols-8 lg:grid-cols-12 with wide gap-8 to gap-12.",
+    "components": "Go cardless or use subtle rounded-md (max 8px border-radius) with sharp technical edges."
+  },
+  "animations": {
+    "hero": "CRITICAL: You MUST use react-tsparticles or framer-motion to create an immersive abstract animated visual background (gradients or particles) using charcoal and turquoise colors. Do not use a static image.",
+    "interactions": "Hover states must increase contrast, use translate-y-1 lift, and incorporate subtle turquoise glowing borders for feature cards."
+  },
+  "media": {
+    "social_proof_avatars": [
+      {
+        "url": "https://images.unsplash.com/photo-1758336011136-343678e4fc05?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwY3JlYXRvciUyMHBvcnRyYWl0JTIwc21pbGluZ3xlbnwwfHx8fDE3NzU2MDgzNzR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Creator Avatar 1",
+        "category": "social_proof"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1758691737387-a89bb8adf768?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwyfHxkaXZlcnNlJTIwY3JlYXRvciUyMHBvcnRyYWl0JTIwc21pbGluZ3xlbnwwfHx8fDE3NzU2MDgzNzR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Creator Avatar 2",
+        "category": "social_proof"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1714976326861-dd180a8a57b9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwzfHxkaXZlcnNlJTIwY3JlYXRvciUyMHBvcnRyYWl0JTIwc21pbGluZ3xlbnwwfHx8fDE3NzU2MDgzNzR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Creator Avatar 3",
+        "category": "social_proof"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1758874384842-7e79ce77ed1a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHw0fHxkaXZlcnNlJTIwY3JlYXRvciUyMHBvcnRyYWl0JTIwc21pbGluZ3xlbnwwfHx8fDE3NzU2MDgzNzR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Creator Avatar 4",
+        "category": "social_proof"
+      }
+    ]
+  },
+  "instructions_to_main_agent": {
+    "1_setup": "Update tailwind variables in index.css to match the charcoal and turquoise palette. Install @phosphor-icons/react, framer-motion, react-tsparticles, and tsparticles.",
+    "2_header": "Create a minimal glassmorphic fixed header (backdrop-blur-xl bg-[#121316]/70) with Logo 'Rupert Joel' and 'Join Waitlist' button.",
+    "3_hero_section": "Must include abstract animated background (tsParticles or framer-motion). Implement a rotating headline (using framer-motion AnimatePresence) for the 3 variations. Overline text for the Urgency Banner ('First 500 get 50% off for life'). Subheadline must explicitly handle objections ('No manual timeline scrubbing needed. Keep full creative control while AI handles the grunt work.').",
+    "4_rotating_headlines": "1. 'Cut Hours of Editing in One Click with AI First-Pass' 2. 'Automate Silence Removal & Summaries Instantly' 3. 'The First-Pass Video Editor for Smart Creators'",
+    "5_waitlist_form": "Email input + 'Get Early Access' primary button side-by-side. Below form: Social proof face pile (use the provided avatars) + 'Join 400+ creators' text. Include data-testid='waitlist-email-input' and 'waitlist-submit-button'.",
+    "6_confirmation_state": "When waitlist form is submitted, show a Confirmation Screen INLINE with a success message. Below it, add the P.S. validation question form: 'P.S. While you wait, what's your biggest editing bottleneck?' with a textarea and a secondary submit button.",
+    "7_how_it_works": "Vertical timeline or 3-step horizontal grid. Steps: 1. Upload Raw Footage, 2. AI First-Pass (Silence removal, WhisperX transcription), 3. Export to Premiere/FCP/DaVinci.",
+    "8_feature_bento": "Bento Grid layout. Highlight 'High-Accuracy WhisperX Transcription', 'One-Click Silence Removal', and 'Automated Chapter/Summary Generation'. Use 'Tracing Beam' or subtle glowing borders (turquoise) on hover for these cards.",
+    "9_testing": "All interactive elements MUST include a `data-testid` attribute (kebab-case, role-based)."
+  },
+  "component_path": {
+    "waitlist_form": "/app/frontend/src/components/WaitlistForm.js",
+    "hero": "/app/frontend/src/components/Hero.js",
+    "bento_features": "/app/frontend/src/components/Features.js",
+    "how_it_works": "/app/frontend/src/components/HowItWorks.js"
+  }
+}
