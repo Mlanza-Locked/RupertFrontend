@@ -29,9 +29,7 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="/" className="flex items-center gap-2.5 group" data-testid="logo-link">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-            <span className="text-primary font-heading font-bold text-sm">R</span>
-          </div>
+          <img src="https://customer-assets.emergentagent.com/job_first-pass-ai/artifacts/uz0vyu96_Rupert.png" alt="RupertJolt" className="w-8 h-8 rounded-lg object-contain" />
           <span className="font-heading font-semibold text-lg text-foreground tracking-tight">
             RupertJolt
           </span>

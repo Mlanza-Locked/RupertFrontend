@@ -37,9 +37,7 @@ export default function Footer() {
       <div className="border-t border-border/30 py-8">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <span className="text-primary font-heading font-bold text-xs">R</span>
-            </div>
+            <img src="https://customer-assets.emergentagent.com/job_first-pass-ai/artifacts/uz0vyu96_Rupert.png" alt="RupertJolt" className="w-6 h-6 rounded-md object-contain" />
             <span className="font-heading font-medium text-sm text-foreground">
               RupertJolt
             </span>
