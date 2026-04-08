@@ -40,6 +40,7 @@ export default function HowItWorks() {
       id="how-it-works"
       data-testid="how-it-works-section"
       className="relative py-24 sm:py-32 border-t border-border/30"
+      data-track-section="how-it-works"
     >
       <div className="max-w-5xl mx-auto px-6">
         {/* Section heading */}

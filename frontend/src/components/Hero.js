@@ -26,7 +26,7 @@ const STARS = Array.from({ length: 50 }, (_, i) => ({
   duration: Math.random() * 3 + 2,
 }));
 
-export default function Hero({ signedUpEmail, setSignedUpEmail }) {
+export default function Hero({ signedUpEmail, setSignedUpEmail, trackClick }) {
   const [headlineIndex, setHeadlineIndex] = useState(0);
   const sectionRef = useRef(null);
 
@@ -58,6 +58,7 @@ export default function Hero({ signedUpEmail, setSignedUpEmail }) {
       id="hero-section"
       data-testid="hero-section"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      data-track-section="hero"
     >
       {/* ===== Night Sky Background ===== */}
       <div className="absolute inset-0 overflow-hidden">
@@ -286,6 +287,7 @@ export default function Hero({ signedUpEmail, setSignedUpEmail }) {
           <WaitlistForm
             signedUpEmail={signedUpEmail}
             setSignedUpEmail={setSignedUpEmail}
+            trackClick={trackClick}
           />
         </motion.div>
 

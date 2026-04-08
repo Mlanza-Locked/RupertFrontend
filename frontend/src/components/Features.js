@@ -62,12 +62,13 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-export default function Features() {
+export default function Features({ trackClick }) {
   return (
     <section
       id="features-section"
       data-testid="features-section"
       className="relative py-24 sm:py-32"
+      data-track-section="features"
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Section heading */}
@@ -175,7 +176,10 @@ export default function Features() {
         >
           <Button
             data-testid="features-cta-button"
-            onClick={() => document.getElementById("hero-section")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => {
+              if (trackClick) trackClick("waitlist-cta-features");
+              document.getElementById("hero-section")?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="bg-primary text-primary-foreground font-heading font-semibold text-base rounded-full px-10 h-12 hover:bg-primary/90 transition-all hover:shadow-[0_0_24px_rgba(106,155,228,0.3)]"
           >
             Join the Waitlist

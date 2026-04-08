@@ -9,7 +9,7 @@ import { Check, Loader2, Send } from "lucide-react";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
-export default function WaitlistForm({ signedUpEmail, setSignedUpEmail }) {
+export default function WaitlistForm({ signedUpEmail, setSignedUpEmail, trackClick }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState("");
@@ -20,6 +20,7 @@ export default function WaitlistForm({ signedUpEmail, setSignedUpEmail }) {
     e.preventDefault();
     if (!email.trim()) return;
     setLoading(true);
+    if (trackClick) trackClick("waitlist-submit-hero");
     try {
       const res = await axios.post(`${API}/waitlist`, { email: email.trim() });
       setSignedUpEmail(email.trim());

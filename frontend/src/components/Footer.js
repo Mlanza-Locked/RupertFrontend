@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
-export default function Footer() {
+export default function Footer({ trackClick }) {
   return (
     <footer data-testid="site-footer">
       {/* Final CTA */}
       <motion.div
         data-testid="footer-cta-section"
         className="border-t border-border/30 py-20 sm:py-24"
+        data-track-section="footer-cta"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
@@ -22,7 +23,10 @@ export default function Footer() {
           </p>
           <Button
             data-testid="footer-cta-button"
-            onClick={() => document.getElementById("hero-section")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => {
+              if (trackClick) trackClick("waitlist-cta-footer");
+              document.getElementById("hero-section")?.scrollIntoView({ behavior: "smooth" });
+            }}
             className="bg-primary text-primary-foreground font-heading font-semibold text-base rounded-full px-10 h-12 hover:bg-primary/90 transition-all hover:shadow-[0_0_24px_rgba(106,155,228,0.3)]"
           >
             Join the Waitlist

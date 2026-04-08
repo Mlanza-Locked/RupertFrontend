@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
-export default function Header() {
+export default function Header({ trackClick }) {
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
 
@@ -11,6 +11,7 @@ export default function Header() {
   });
 
   const scrollToWaitlist = () => {
+    if (trackClick) trackClick("waitlist-cta-header");
     const el = document.getElementById("hero-section");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
