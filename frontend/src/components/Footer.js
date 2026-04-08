@@ -14,10 +14,10 @@ export default function Footer() {
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4 section-text-glow">
             Ready to Stop Editing the Hard Way?
           </h2>
-          <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto">
+          <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto section-text-glow">
             Let RupertJolt handle the grunt work so you can focus on what actually matters — creating.
           </p>
           <Button

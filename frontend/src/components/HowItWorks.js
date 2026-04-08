@@ -53,10 +53,10 @@ export default function HowItWorks() {
           <p className="font-heading uppercase text-xs tracking-[0.2em] text-primary mb-3">
             How it works
           </p>
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4 section-text-glow">
             Three Steps. Zero Headaches.
           </h2>
-          <p className="text-base text-muted-foreground max-w-lg mx-auto">
+          <p className="text-base text-muted-foreground max-w-lg mx-auto section-text-glow">
             From raw footage to a polished first-pass in minutes, not hours.
           </p>
         </motion.div>
@@ -79,7 +79,7 @@ export default function HowItWorks() {
             >
               {/* Step number + icon */}
               <div className="relative inline-flex flex-col items-center mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-card border border-border/60 flex items-center justify-center mb-3 relative z-10">
+                <div className="w-16 h-16 rounded-2xl bg-card/95 border border-border/60 flex items-center justify-center mb-3 relative z-10" style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.4)' }}>
                   <step.icon className="w-6 h-6 text-primary" />
                 </div>
                 <span className="font-heading text-xs tracking-[0.15em] text-muted-foreground uppercase">
@@ -87,10 +87,10 @@ export default function HowItWorks() {
                 </span>
               </div>
 
-              <h3 className="font-heading font-semibold text-lg text-foreground mb-3">
+              <h3 className="font-heading font-semibold text-lg text-foreground mb-3 section-text-glow">
                 {step.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto section-text-glow">
                 {step.description}
               </p>
             </motion.div>

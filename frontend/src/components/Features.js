@@ -81,10 +81,10 @@ export default function Features() {
           <p className="font-heading uppercase text-xs tracking-[0.2em] text-primary mb-3">
             Features
           </p>
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4 section-text-glow">
             Otterly Effortless Editing
           </h2>
-          <p className="text-base text-muted-foreground max-w-lg mx-auto">
+          <p className="text-base text-muted-foreground max-w-lg mx-auto section-text-glow">
             Three powerful tools working together so you never have to scrub a
             timeline again.
           </p>
@@ -102,7 +102,7 @@ export default function Features() {
             <motion.div
               key={i}
               data-testid={`feature-card-${i}`}
-              className={`feature-card ${feature.span} bg-card border border-border/50 rounded-lg p-8 group`}
+              className={`feature-card ${feature.span} bg-card/95 border border-border/60 rounded-lg p-8 group`}
               variants={cardVariants}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
@@ -129,10 +129,10 @@ export default function Features() {
           <p className="font-heading uppercase text-xs tracking-[0.2em] text-primary mb-3">
             And more
           </p>
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl text-foreground tracking-tight mb-4 section-text-glow">
             Tools That Get Smarter with You
           </h2>
-          <p className="text-base text-muted-foreground max-w-lg mx-auto">
+          <p className="text-base text-muted-foreground max-w-lg mx-auto section-text-glow">
             Rupert doesn't just edit — it learns your style and adapts to every platform you publish on.
           </p>
         </motion.div>
@@ -149,7 +149,7 @@ export default function Features() {
             <motion.div
               key={`more-${i}`}
               data-testid={`more-feature-card-${i}`}
-              className={`feature-card ${feature.span} bg-card border border-border/50 rounded-lg p-8 group`}
+              className={`feature-card ${feature.span} bg-card/95 border border-border/60 rounded-lg p-8 group`}
               variants={cardVariants}
             >
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
