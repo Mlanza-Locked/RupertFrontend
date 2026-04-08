@@ -177,6 +177,70 @@
   animation: water-drop-float 5s ease-in-out infinite;
 }
 
+/* ===== Cursor Water Ripple ===== */
+@keyframes ripple-expand {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.5;
+    border-width: 2.5px;
+  }
+  50% {
+    opacity: 0.2;
+    border-width: 1.5px;
+  }
+  100% {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+    border-width: 0.5px;
+  }
+}
+
+@keyframes ripple-expand-delayed {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    border-width: 2px;
+  }
+  12% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.12;
+    border-width: 1px;
+  }
+  100% {
+    width: 240px;
+    height: 240px;
+    opacity: 0;
+    border-width: 0.3px;
+  }
+}
+
+.ripple-ring {
+  position: absolute;
+}
+
+.ripple-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgba(90, 165, 235, 0.55);
+  background: radial-gradient(circle, rgba(70, 140, 220, 0.1) 0%, transparent 70%);
+  animation: ripple-expand 1.2s ease-out forwards;
+}
+
+.ripple-circle-delayed {
+  border-color: rgba(80, 155, 225, 0.35);
+  background: none;
+  animation: ripple-expand-delayed 1.5s ease-out forwards;
+}
+
 /* Section text shadow for readability over river */
 .section-text-glow {
   text-shadow: 0 0 30px rgba(14, 16, 22, 0.9), 0 0 60px rgba(14, 16, 22, 0.6);

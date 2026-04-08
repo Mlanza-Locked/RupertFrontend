@@ -6,6 +6,7 @@ import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import Footer from "@/components/Footer";
 import RiverBackground from "@/components/RiverBackground";
+import CursorRipple from "@/components/CursorRipple";
 import { Toaster } from "sonner";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground font-body relative">
       <RiverBackground />
+      <CursorRipple />
       <div className="relative z-10">
         <Header />
         <main>
