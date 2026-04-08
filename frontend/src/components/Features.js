@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mic, Scissors, BookOpen, BrainCircuit, Captions, Layers } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const FEATURES = [
   {
@@ -162,6 +163,26 @@ export default function Features() {
               </p>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* CTA after tools */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+        >
+          <Button
+            data-testid="features-cta-button"
+            onClick={() => document.getElementById("hero-section")?.scrollIntoView({ behavior: "smooth" })}
+            className="bg-primary text-primary-foreground font-heading font-semibold text-base rounded-full px-10 h-12 hover:bg-primary/90 transition-all hover:shadow-[0_0_24px_rgba(106,155,228,0.3)]"
+          >
+            Join the Waitlist
+          </Button>
+          <p className="text-sm text-muted-foreground mt-3">
+            First 500 signups get 50% off for life.
+          </p>
         </motion.div>
       </div>
     </section>

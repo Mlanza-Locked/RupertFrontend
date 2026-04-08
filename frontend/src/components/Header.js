@@ -33,7 +33,7 @@ export default function Header() {
             <span className="text-primary font-heading font-bold text-sm">R</span>
           </div>
           <span className="font-heading font-semibold text-lg text-foreground tracking-tight">
-            Rupert Joel
+            RupertJolt
           </span>
         </a>
 
