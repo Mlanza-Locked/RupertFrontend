@@ -1,5 +1,5 @@
 {
-  "summary": "Completed comprehensive testing of Rupert Joel landing page. Backend APIs fully functional, frontend mostly working with one minor issue in headline rotation feature.",
+  "summary": "Completed comprehensive testing of Rupert Jolt landing page. Backend APIs fully functional, frontend mostly working with one minor issue in headline rotation feature.",
   "backend_issues": {
     "critical_bugs": [],
     "flaky_endpoints": []
