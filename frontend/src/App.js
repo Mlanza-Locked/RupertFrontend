@@ -10,6 +10,7 @@ import RiverBackground from "@/components/RiverBackground";
 import AdminPage from "@/pages/AdminPage";
 import { Toaster } from "sonner";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function LandingPage() {
   const [signedUpEmail, setSignedUpEmail] = useState(null);
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
