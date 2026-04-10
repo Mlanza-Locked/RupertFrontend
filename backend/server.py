@@ -235,7 +235,7 @@ async def admin_login(creds: AdminLogin, request: Request, response: Response):
     token = create_access_token(admin["id"], admin["username"])
     response.set_cookie(
         key="access_token", value=token, httponly=True,
-        secure=False, samesite="lax", max_age=7200, path="/",
+        secure=True, samesite="lax", max_age=7200, path="/",
     )
     return {"username": admin["username"], "token": token}
 
