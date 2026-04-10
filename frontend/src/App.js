@@ -11,6 +11,7 @@ import AdminPage from "@/pages/AdminPage";
 import { Toaster } from "sonner";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 function LandingPage() {
   const [signedUpEmail, setSignedUpEmail] = useState(null);
@@ -41,6 +42,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <SpeedInsights />
+      <Analytics />
     </BrowserRouter>
   );
 }
