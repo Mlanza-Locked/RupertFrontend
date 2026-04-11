@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "builds": [
     {
@@ -13,7 +14,7 @@
     }
   ],
   "routes": [
-    { "src": "/api/analyze", "dest": "/api/analyze.py" },
+    { "src": "/api/(.*)", "dest": "/api/analyze.py" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
